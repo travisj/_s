@@ -195,6 +195,23 @@ function _s_posted_on() {
 }
 endif;
 
+if ( ! function_exists( '_s_posted_on_flyout' ) ) :
+/**
+ * Prints HTML with meta information for the current post-date/time and author.
+ */
+function _s_posted_on_flyout() {
+	$time_string = '<time class="entry-date published" datetime="%1$s">%2$s<span class="year">%3$s</span></time>';
+
+	$time_string = sprintf( $time_string,
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date('M j') ),
+		esc_html( get_the_date('Y') )
+	);
+
+	printf( $time_string );
+}
+endif;
+
 /**
  * Returns true if a blog has more than 1 category
  */
